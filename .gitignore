@@ -1,0 +1,9 @@
+package-lock.json
+
+/node_modules
+
+/screenshot/*.png
+/mn/*.jpg
+/mn/*.jpeg
+/mn/*.png
+/mn/*.gif
