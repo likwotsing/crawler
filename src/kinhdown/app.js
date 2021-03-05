@@ -7,6 +7,10 @@ const puppeteer = require('puppeteer');
   const page = await browser.newPage()
   await page.goto('https://yun.kdbaidu.com')
   console.log('go to https://pan.kdbaidu.com/')
+  // https://www.kdbaidu.com
+  // https://pan.kdbaidu.com/
+  // https://yun.kdbaidu.com
+
 
   await page.setViewport({
     width: 1920,
@@ -57,9 +61,10 @@ const puppeteer = require('puppeteer');
       const newPagePromise = new Promise(x => browser.once('targetcreated', target => x(target.page())));
       link.click()
       const newPage = await newPagePromise
-      const divCount = await newPage.$$eval('.alert .card-text', divs => {
-        console.log(divs[2])
-        return divs[2]
+      const divCount = await newPage.$eval('.alert-primary .card-text:nth-of-type(3)', el => {
+        // const matches = el.innerHTML.match(/^Aria2下载参数：<b><br>(.+?)<\/b>$/)
+        // return matches[1]
+        return el.innerHTML
       })
       console.log(divCount)
       // const title = await newPage.$$eval('.alert .card-text', el => {
